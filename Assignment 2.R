@@ -4,11 +4,21 @@
 #library(dplyr)
 Temp <- getwd()
 setwd("./covid-19-data/")
+
+#   Failure to clone/link COVID-19 repo: -10
+
+#correct way to read csv for future reference
+DF <- read.csv(here("covid-19-data","us-states.csv")) 
+
 DF<- read.csv("us-states.csv")
 setwd(Temp)
 #Process the data frame using dplyr functions to keep only observations for Pennsylvania.
 DF_Penn <- filter(DF, state =="Pennsylvania")
 #Create 2 new variables, "incr_cases" and "incr_deaths" 
+
+#   Failure to remember to set incremental cases and deaths to levels on row 1: -5
+#   Failure to implement for() loop successfully: -10
+
 DF_Penn <-mutate(DF_Penn,incr_cases = cases-lag(cases) )
 DF_Penn <-mutate(DF_Penn,incr_deaths = deaths-lag(deaths) )
 #Calculate the sd() of all incr_cases in PA and print it in the Console.
