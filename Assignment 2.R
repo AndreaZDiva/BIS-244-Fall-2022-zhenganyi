@@ -5,7 +5,7 @@
 Temp <- getwd()
 setwd("./covid-19-data/")
 
-#   Failure to clone/link COVID-19 repo: -10
+#   Failure to clone/link COVID-19 repo: -5
 
 #correct way to read csv for future reference
 DF <- read.csv(here("covid-19-data","us-states.csv")) 
@@ -16,8 +16,7 @@ setwd(Temp)
 DF_Penn <- filter(DF, state =="Pennsylvania")
 #Create 2 new variables, "incr_cases" and "incr_deaths" 
 
-#   Failure to remember to set incremental cases and deaths to levels on row 1: -5
-#   Failure to implement for() loop successfully: -10
+#   Failure to implement increments properly -10 (final answer does not match)
 
 DF_Penn <-mutate(DF_Penn,incr_cases = cases-lag(cases) )
 DF_Penn <-mutate(DF_Penn,incr_deaths = deaths-lag(deaths) )
